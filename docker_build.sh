@@ -1,0 +1,1 @@
+docker build -t visrunofshow . && docker run -d -p 7133:7133 --name visrunofshowcontainer visrunofshow

@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - IEEE VIS 2023 Run of Show</title>
+    <title>@ViewData["Title"] - IEEE VIS 2024 Run of Show</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/IeeeVisRunOfShowWebApp.styles.css" asp-append-version="true" />
+    <!-- <link rel="stylesheet" href="~/IeeeVisRunOfShowWebApp.styles.css" asp-append-version="true" /> -->
     
     
 
@@ -27,14 +27,14 @@
                 @if(ViewData["DisableHome"] is true)
                 {
                     <div class="py-2">
-                        <img class="header-img" src="~/img/vis2023_logo1.svg"/>
+                        <img class="header-img" src="~/img/vi2024_logo-v2-trim.png"/>
                         <span class="ms-2 align-middle h4">Run of Show</span>
                     </div>
                 }
                 else
                 {
                     <a class="navbar-brand" asp-area="" asp-page="/Index" asp-route-key="@(ViewData["Key"])">
-                        <img class="header-img" src="~/img/vis2023_logo1.svg" />
+                        <img class="header-img" src="~/img/vi2024_logo-v2-trim.png" />
                         <span class="ms-2 align-middle h4">Run of Show</span>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -60,7 +60,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 Johannes Knittel
+            &copy; 2024 IEEE Vis
         </div>
     </footer>
 
