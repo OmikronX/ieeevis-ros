@@ -1,1 +1,2 @@
-docker build -t visrunofshow . && docker run -d -p 7133:7133 --name visrunofshowcontainer visrunofshow
+#only use if docker image is running, good for testing at it clears the cache in redeployment
+docker stop visrunofshowcontainer && docker rm visrunofshowcontainer && docker rmi visrunofshow && docker build -t visrunofshow . && docker run -d -p 7133:7133 --name visrunofshowcontainer visrunofshow

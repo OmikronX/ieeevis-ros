@@ -323,8 +323,9 @@ namespace IeeeVisRunOfShowWebApp.Models
         {
             if (string.IsNullOrWhiteSpace(dt))
                 return null;
-            var pdt =  DateTime.ParseExact(dt.Trim(), "u", null, DateTimeStyles.AssumeUniversal).ToMelbourne();
-            return pdt;
+            var utc = DateTime.ParseExact(dt.Trim(), "u", null, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
+            //return time parsed
+            return utc;
         }
 
     }
