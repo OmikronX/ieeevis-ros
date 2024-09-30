@@ -28,7 +28,7 @@ RUN dotnet publish -c release -o /webapp
 EXPOSE 7133
 
 # Set environment variables if necessary (e.g., ASPNETCORE_ENVIRONMENT)
-ENV ASPNETCORE_URLS=https://+:7133
+ENV ASPNETCORE_URLS=http://+:7133
 
 WORKDIR /webapp
 
