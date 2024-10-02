@@ -324,7 +324,7 @@ namespace IeeeVisRunOfShowWebApp.Models
         {
             if (string.IsNullOrWhiteSpace(dt))
                 return null;
-            var utc = DateTime.ParseExact(dt.Trim(), "u", null, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
+            var utc = DateTime.Parse(dt.Trim(), CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
             //return time parsed
             return utc;
         }
