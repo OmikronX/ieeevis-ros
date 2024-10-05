@@ -9,7 +9,7 @@ namespace IeeeVisRunOfShowWebApp.Models
 {
     public class DataSourceModel
     {
-        
+
         private static readonly Lazy<DataSourceModel> _default = new(() => new DataSourceModel());
         public static DataSourceModel Default => _default.Value;
 
@@ -55,13 +55,13 @@ namespace IeeeVisRunOfShowWebApp.Models
             try
             {
                 var cache = SheetsCache.LoadOrCreate();
-                if (cache.Events is { Length : > 0 })
+                if (cache.Events is { Length: > 0 })
                 {
                     _lastCheckTimeUtc = cache.LastCheckTimeUtc;
                     Refresh(cache);
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
             }
         }
@@ -86,7 +86,7 @@ namespace IeeeVisRunOfShowWebApp.Models
                 return info;
             lock (_zoomDict)
             {
-                if(!_zoomDict.ContainsKey(id))
+                if (!_zoomDict.ContainsKey(id))
                     _zoomDict.Add(id, (info, expiry));
             }
 
@@ -274,13 +274,14 @@ namespace IeeeVisRunOfShowWebApp.Models
                             }
                             var paper = papers.GetValueOrDefault(svm.PaperUid);
                             var doi = paper?.GetValueOrDefault("DOI")?.Trim();
+                            var fno = paper?.GetValueOrDefault("FNO")?.Trim();
                             var hasPdf = paper?.GetValueOrDefault("Has PDF")?.Trim()?.ToLowerInvariant();
                             var hasVideo = paper?.GetValueOrDefault("Has Video")?.Trim()?.ToLowerInvariant();
-                            if (svm.PaperUid.StartsWith("v-tvcg") || svm.PaperUid.StartsWith("v-cga") || svm.PaperUid.StartsWith("v-vr"))
+                            if (!string.IsNullOrWhiteSpace(fno))
                             {
-                                var fno = svm.PaperUid[(svm.PaperUid.LastIndexOf('-') + 1)..];
                                 svm.IeeeUrl = "https://ieeexplore.ieee.org/document/" + fno;
-                            } else if (!string.IsNullOrWhiteSpace(doi))
+                            }
+                            else if (!string.IsNullOrWhiteSpace(doi))
                             {
                                 svm.DoiUrl = "https://doi.org/" + doi;
                             }
@@ -288,7 +289,7 @@ namespace IeeeVisRunOfShowWebApp.Models
                             svm.HasPdf = hasPdf is "y" or "1";
                             svm.HasVideo = hasVideo is "y" or "1";
                             if (svm.HasPdf)
-                                svm.PdfUrl = $"https://ieeevis.b-cdn.net/vis_2023/pdfs/{svm.PaperUid}.pdf";
+                                svm.PdfUrl = $"https://ieeevis.b-cdn.net/vis_2024/pdfs/{svm.PaperUid}.pdf";
                             EnrichHints(svm);
                             return svm;
                         }).Where(it => it is { Start: not null, End: not null }).ToArray();
@@ -323,7 +324,7 @@ namespace IeeeVisRunOfShowWebApp.Models
         {
             if (string.IsNullOrWhiteSpace(dt))
                 return null;
-            var utc = DateTime.ParseExact(dt.Trim(), "u", null, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
+            var utc = DateTime.Parse(dt.Trim(), CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
             //return time parsed
             return utc;
         }
