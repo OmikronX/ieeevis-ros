@@ -23,6 +23,10 @@
         public string? ZoomMeetingID { get; set; }
         public string? ZoomPassword { get; set; }
         public string? ZoomURL { get; set; }
+        public string? ZoomHostStartURL { get; set; }
+        public string? ZoomHostUsername { get; set; }
+        public string? AdditionalPresenters { get; set; }
+        public string? AdditionalPresentersEmails { get; set; }
         public string SessionKey { get; set; }
     }
 }

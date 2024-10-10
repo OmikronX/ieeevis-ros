@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using VisRunOfShowWebApp.Models;
@@ -38,20 +39,20 @@ namespace IeeeVisRunOfShowWebApp.Models
             _authHelper = new AuthHelper(_privateKey);
             AdminKey = settings["AdminKey"];
             _sheetsHelper = new GoogleSheetsHelper(dataUrl);
-            try
-            {
-                var jwtPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config", "zoom_jwt_token.txt");
-                if (File.Exists(jwtPath))
-                {
-                    var jwt = File.ReadAllText(jwtPath);
-                    if (!string.IsNullOrWhiteSpace(jwt))
-                        _zoomApi = new ZoomApi(jwt);
-                }
-            }
-            catch (Exception e)
-            {
-                Trace.WriteLine(e);
-            }
+            // try
+            // {
+            //     var jwtPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config", "zoom_jwt_token.txt");
+            //     if (File.Exists(jwtPath))
+            //     {
+            //         var jwt = File.ReadAllText(jwtPath);
+            //         if (!string.IsNullOrWhiteSpace(jwt))
+            //             _zoomApi = new ZoomApi(jwt);
+            //     }
+            // }
+            // catch (Exception e)
+            // {
+            //     Trace.WriteLine(e);
+            // }
             try
             {
                 var cache = SheetsCache.LoadOrCreate();
@@ -221,7 +222,11 @@ namespace IeeeVisRunOfShowWebApp.Models
                             DiscordURL = dict.GetValueOrDefault("Discord URL") ?? track.DiscordURL ?? "",
                             ZoomMeetingID = dict.GetValueOrDefault("Zoom Meeting ID") ?? "",
                             ZoomPassword = dict.GetValueOrDefault("Zoom Password") ?? "",
-                            ZoomURL = dict.GetValueOrDefault("Zoom URL") ?? ""
+                            ZoomURL = dict.GetValueOrDefault("Zoom URL") ?? "",
+                            ZoomHostStartURL = dict.GetValueOrDefault("Zoom Host Start URL") ?? "",
+                            ZoomHostUsername = dict.GetValueOrDefault("Zoom Host Username") ?? "",
+                            AdditionalPresenters = dict.GetValueOrDefault("Additional Presenters") ?? "",
+                            AdditionalPresentersEmails = dict.GetValueOrDefault("Additional Presenters Emails") ?? ""
                         };
                         if (string.IsNullOrWhiteSpace(vm.SessionFFURL))
                             vm.SessionFFURL = ffVideos.GetValueOrDefault(vm.SessionID) ?? "";
@@ -294,6 +299,7 @@ namespace IeeeVisRunOfShowWebApp.Models
                             return svm;
                         }).Where(it => it is { Start: not null, End: not null }).ToArray();
                     session.Slots = items;
+                    Console.WriteLine("!!!! Items Length =" + items.Length);
 
                 }
             }

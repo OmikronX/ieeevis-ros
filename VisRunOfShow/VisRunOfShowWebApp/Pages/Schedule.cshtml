@@ -36,22 +36,22 @@
     <div class="row session-info-row mb-2">
         <div class="col-xl-1"></div>
         <div class="col-xl-11">
-            <p class="my-1">
+            <p class="my-3">
                 <span><small>@session.Track.RoomName</small></span>
-                @if (Model.HasElevatedRights)
+                @* @if (Model.HasElevatedRights)
                 {
                     <span class="ms-3"><small>
                         <a target="_blank" asp-page="/Schedule" asp-route-sessionId="@session.SessionID" asp-route-key="@session.SessionKey">Link for Sharing</a>
                     </small></span>
-                }
+                } *@
                 <br>
                 <span><strong>Session Chair(s):</strong></span> <span>@string.Join(", ", session.SessionChairs)</span>
                 <span class="ms-2"><strong>Emails:</strong></span> <span>@string.Join(", ", session.SessionChairsEmails)</span>
             </p>
-            <p class="my-1">
+            <p class="my-3">
                 @if (!string.IsNullOrEmpty(session.SessionYouTubeURL))
                 {
-                    <span><strong>Broadcast:</strong></span> <a href="@session.SessionYouTubeURL" target="_blank">@session.SessionYouTubeURL</a>
+                    <span><strong>YouTube Broadcast:</strong></span> <a href="@session.SessionYouTubeURL" target="_blank">@session.SessionYouTubeURL</a>
                 }
                 <span class="ms-3"><strong>Fast Forwards:</strong></span> <a href="@session.SessionFFURL" target="_blank">@session.SessionFFURL</a> <br>
                 @if (!string.IsNullOrEmpty(session.SlidoURL))
@@ -63,25 +63,49 @@
                     <span class=""><strong>Discord:</strong></span> <a href="@session.DiscordURL" target="_blank">@session.DiscordURL</a>
                 }
             </p>
-            
-            @if (Model.HasElevatedRights)
-            {
-                @if (!string.IsNullOrWhiteSpace(session.ZoomMeetingID))
+            <p class="my-3">
+                <span><small>@session.Track.RoomName</small></span>
+                @if (Model.HasElevatedRights)
                 {
-                    <p class="my-1">
-                        <span><strong>Zoom Meeting:</strong></span> <span>@session.ZoomMeetingID</span>
-                        <span class="ms-2"><strong>Password:</strong></span> <span>@session.ZoomPassword</span>
-                        <span class="ms-2"><strong>Join URL:</strong></span> <a href="@session.ZoomURL" target="_blank">@session.ZoomURL</a>
-                    </p>
-
-
-                    <p class="my-1">
-                        <span><strong>Zoom Join as Host URL:</strong></span> 
-                        <a href="#" target="_blank" id="start_url_@session.SessionID" style="word-wrap: break-word;"></a>
-                        <button type="button" class="btn btn-outline-primary btn-sm ms-2" onclick="getStartUrl('@Url.Action("MeetingInfo", "Zoom", new{key = Model.Key, id = session.ZoomMeetingID})', '@session.SessionID');">Retrieve URL</button>
-                        <span id="start_url_msg_@session.SessionID" class="mx-3 badge bg-danger d-none"></span>
-                    </p>
+                    <span class="ms-3"><small>
+                        <a target="_blank" asp-page="/Schedule" asp-route-sessionId="@session.SessionID" asp-route-key="@session.SessionKey">Link for Sharing</a>
+                    </small></span>
                 }
+                <br>
+                <span><strong>Session Chair(s):</strong></span> <span>@string.Join(", ", session.SessionChairs)</span>
+                <span class="ms-2"><strong>Emails:</strong></span> <span>@string.Join(", ", session.SessionChairsEmails)</span>
+            </p>
+            <p class="my-3">
+                <div>
+                    <span><strong>Additional Presenters:</strong></span> <span>@string.Join(", ", session.AdditionalPresenters)</span>
+                </div>
+                <div>
+                    <span><strong>Additional Presenters Emails:</strong></span> <span>@string.Join(", ", session.AdditionalPresentersEmails)</span>
+                </div>
+            </p>
+            
+            @if (!string.IsNullOrWhiteSpace(session.ZoomMeetingID))
+            {
+                <p class="my-3">
+                    <span><strong>Zoom Meeting:</strong></span> <span>@session.ZoomMeetingID</span>
+                    <span class="ms-2"><strong>Password:</strong></span> <span>@session.ZoomPassword</span>
+                    <span class="ms-2"><strong>Join URL:</strong></span> <a href="@session.ZoomURL" target="_blank">@session.ZoomURL</a>
+                </p>
+
+
+                <p class="my-3">
+                    <div>
+                        <span class="mx-1 badge bg-danger">Danger Zone: Only for A/V Student Volunteer</span>
+                    </div>
+                    <div>
+                        <span><strong>Zoom Start as Host URL:</strong></span> 
+                        <a href="@session.ZoomHostStartURL" target="_blank" id="start_url_@session.SessionID" style="word-wrap: break-word;">Start Zoom as Host URL</a>
+                        <span class="ms-2"><strong>Host Username:</strong></span>  <span>@session.ZoomHostUsername</span>
+                        <span class="ms-2"><strong>Host Password:</strong></span>  <span>MiltonStinks24</span>
+                    @* <button type="button" class="btn btn-outline-primary btn-sm ms-2" onclick="getStartUrl('@Url.Action("MeetingInfo", "Zoom", new{key = Model.Key, id = session.ZoomMeetingID})', '@session.SessionID');">Retrieve URL</button> *@
+                    @* <span id="start_url_msg_@session.SessionID" class="mx-3 badge bg-danger d-none"></span> *@
+                    </div>
+                </p>
             }
         </div>
     </div>
@@ -187,7 +211,7 @@
     }
 }
 
-@if (Model.HasElevatedRights)
+@* @if (Model.HasElevatedRights)
 {
     <script language="javascript">
         function getStartUrl(url, sessionId){
@@ -211,7 +235,7 @@
                 });
         }
     </script>
-}
+} *@
 
 <script language="javascript">
     document.addEventListener("DOMContentLoaded", function() {
