@@ -299,8 +299,6 @@ namespace IeeeVisRunOfShowWebApp.Models
                             return svm;
                         }).Where(it => it is { Start: not null, End: not null }).ToArray();
                     session.Slots = items;
-                    Console.WriteLine("!!!! Items Length =" + items.Length);
-
                 }
             }
 
