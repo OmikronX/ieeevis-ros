@@ -64,18 +64,6 @@
                 }
             </p>
             <p class="my-3">
-                <span><small>@session.Track.RoomName</small></span>
-                @if (Model.HasElevatedRights)
-                {
-                    <span class="ms-3"><small>
-                        <a target="_blank" asp-page="/Schedule" asp-route-sessionId="@session.SessionID" asp-route-key="@session.SessionKey">Link for Sharing</a>
-                    </small></span>
-                }
-                <br>
-                <span><strong>Session Chair(s):</strong></span> <span>@string.Join(", ", session.SessionChairs)</span>
-                <span class="ms-2"><strong>Emails:</strong></span> <span>@string.Join(", ", session.SessionChairsEmails)</span>
-            </p>
-            <p class="my-3">
                 <div>
                     <span><strong>Additional Presenters:</strong></span> <span>@string.Join(", ", session.AdditionalPresenters)</span>
                 </div>
