@@ -247,7 +247,7 @@ namespace IeeeVisRunOfShowWebApp.Models
                             var presentersChangedEmails = dict.GetValueOrDefault("Slot Presenters Emails Changed") ?? "";
 
                             var contributorsFinal = string.IsNullOrEmpty(presentersChanged) ? contributors : presentersChanged;
-                            var contributorsEmailsFinal = string.IsNullOrEmpty(presentersChangedEmails) ? contributors : presentersChanged;
+                            var contributorsEmailsFinal = string.IsNullOrEmpty(presentersChangedEmails) ? contributorsEmails : presentersChangedEmails;
                             var svm = new SlotViewModel
                             {
                                 Session = session,
