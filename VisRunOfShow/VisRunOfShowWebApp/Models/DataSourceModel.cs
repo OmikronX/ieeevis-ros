@@ -240,6 +240,14 @@ namespace IeeeVisRunOfShowWebApp.Models
                         .Where(dict => dict.GetValueOrDefault("Session ID") == session.SessionID)
                         .Select(dict =>
                         {
+                            var contributors = dict.GetValueOrDefault("Slot Contributors") ?? "";
+                            var contributorsEmails = dict.GetValueOrDefault("Slot Contributors Emails") ?? "";
+
+                            var presentersChanged = dict.GetValueOrDefault("Slot Presenters Changed") ?? "";
+                            var presentersChangedEmails = dict.GetValueOrDefault("Slot Presenters Emails Changed") ?? "";
+
+                            var contributorsFinal = string.IsNullOrEmpty(presentersChanged) ? contributors : presentersChanged;
+                            var contributorsEmailsFinal = string.IsNullOrEmpty(presentersChangedEmails) ? contributors : presentersChanged;
                             var svm = new SlotViewModel
                             {
                                 Session = session,
@@ -248,10 +256,8 @@ namespace IeeeVisRunOfShowWebApp.Models
                                 Start = ParseDateTime(dict.GetValueOrDefault("Slot DateTime Start") ?? ""),
                                 End = ParseDateTime(dict.GetValueOrDefault("Slot DateTime End") ?? ""),
                                 SlotType = dict.GetValueOrDefault("Slot Type") ?? "",
-                                Contributors = (dict.GetValueOrDefault("Slot Contributors") ?? "")
-                                    .Split('|', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
-                                ContributorEmails = (dict.GetValueOrDefault("Slot Contributors Emails") ?? "")
-                                    .Split('|', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
+                                Contributors = contributorsFinal.Split('|', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
+                                ContributorEmails = contributorsEmailsFinal.Split('|', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
                                 AttendanceMode = dict.GetValueOrDefault("Attendance Mode") ?? "",
                                 ParsedAttendanceMode = ParseAttendanceMode(dict.GetValueOrDefault("Attendance Mode") ?? ""),
                                 PaperUid = dict.GetValueOrDefault("Paper UID") ?? "",
