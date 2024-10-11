@@ -172,7 +172,12 @@ namespace IeeeVisRunOfShowWebApp.Models
                     SlidoURL = dict.GetValueOrDefault("Slido URL") ?? "",
                     DiscordChannel = dict.GetValueOrDefault("Discord Channel") ?? "",
                     DiscordChannelID = dict.GetValueOrDefault("Discord Channel ID") ?? "",
-                    DiscordURL = dict.GetValueOrDefault("Discord URL") ?? ""
+                    DiscordURL = dict.GetValueOrDefault("Discord URL") ?? "",
+                    StreamKeyID = dict.GetValueOrDefault("Stream Key ID") ?? "",
+                    StreamKeyTitle = dict.GetValueOrDefault("Stream Key Title") ?? "",
+                    StreamIngestionURL = dict.GetValueOrDefault("Stream Ingestion URL") ?? "",
+                    CaptionsIngestionURL = dict.GetValueOrDefault("Captions Ingestion URL") ?? "",
+                    StreamKey = dict.GetValueOrDefault("Stream Key") ?? "",
                 }).ToArray();
 
             var events = cache.Events.Select(dict => new EventViewModel

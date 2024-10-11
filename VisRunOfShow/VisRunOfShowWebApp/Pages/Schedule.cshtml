@@ -82,16 +82,31 @@
 
 
                 <p class="my-3">
-                    <div>
-                        <span class="mx-1 badge bg-danger">Danger Zone: Only for A/V Student Volunteer</span>
+                    <div class="my-2">
+                        <span class="badge bg-danger">Danger Zone: Only for A/V Student Volunteer</span>
                     </div>
-                    <div>
+                    <div class="my-3">
                         <span><strong>Zoom Start as Host URL:</strong></span> 
                         <a href="@session.ZoomHostStartURL" target="_blank" id="start_url_@session.SessionID" style="word-wrap: break-word;">Start Zoom as Host URL</a>
                         <span class="ms-2"><strong>Host Username:</strong></span>  <span>@session.ZoomHostUsername</span>
                         <span class="ms-2"><strong>Host Password:</strong></span>  <span>MiltonStinks24</span>
                     @* <button type="button" class="btn btn-outline-primary btn-sm ms-2" onclick="getStartUrl('@Url.Action("MeetingInfo", "Zoom", new{key = Model.Key, id = session.ZoomMeetingID})', '@session.SessionID');">Retrieve URL</button> *@
                     @* <span id="start_url_msg_@session.SessionID" class="mx-3 badge bg-danger d-none"></span> *@
+                    </div>
+                    <div class="my-3">
+                        <span><strong><span class="badge bg-danger">Not Active</span> status for Zoom Custom Streaming Service? Use these parameters:</strong></span>
+                        <div>
+                            <span class="ms-2"><strong>Streaming URL: </strong></span> <span>@session.Track.StreamIngestionURL</span>
+                        </div>
+                        <div>
+                            <span class="ms-2"><strong>Streaming key: </strong></span> <span>@session.Track.StreamKey</span>
+                        </div>
+                        <div>
+                            <span class="ms-2"><strong>Live streaming page URL: </strong></span> <span>@session.SessionYouTubeURL</span>
+                        </div>
+                        <div>
+                            <span class="ms-2"><strong>Resolution: </strong></span> <span>Full HD (1080p)</span>
+                        </div>
                     </div>
                 </p>
             }
