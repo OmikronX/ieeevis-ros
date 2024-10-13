@@ -27,6 +27,10 @@
         public string? ZoomHostUsername { get; set; }
         public string? AdditionalPresenters { get; set; }
         public string? AdditionalPresentersEmails { get; set; }
+        public string? SVZoomHost { get; set; }
+        public string? SVZoomHostEmail { get; set; }
+        public string? SVChannelMonitor { get; set; }
+        public string? SVChannelMonitorEmail { get; set; }
         public string SessionKey { get; set; }
     }
 }

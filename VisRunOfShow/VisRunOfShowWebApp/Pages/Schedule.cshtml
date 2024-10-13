@@ -45,9 +45,20 @@
                     </small></span>
                 } *@
                 <br>
-                <span><strong>Session Chair(s):</strong></span> <span>@string.Join(", ", session.SessionChairs)</span>
-                <span class="ms-2"><strong>Emails:</strong></span> <span>@string.Join(", ", session.SessionChairsEmails)</span>
+                <span><strong>Session Chair(s):</strong></span> <span>@string.Join(", ", session.SessionChairs)</span><br>
+                <span><strong>Emails:</strong></span> <span>@string.Join(", ", session.SessionChairsEmails)</span>
             </p>
+            <div class="my-3">
+                <span><small>Student Volunteers</small></span>
+                <p class="my-1">
+                    <span><strong>SV Zoom Host(s):</strong></span> <span>@session.SVZoomHost</span><br>
+                    <span><strong>Emails:</strong></span> <span>@session.SVZoomHostEmail</span>
+                </p>
+                <p class="my-1">
+                    <span><strong>SV Channel Monitor(s):</strong></span> <span>@session.SVChannelMonitor</span><br>
+                    <span><strong>Emails:</strong></span> <span>@session.SVChannelMonitorEmail</span>
+                </p>
+            </div>
             <p class="my-3">
                 @if (!string.IsNullOrEmpty(session.SessionYouTubeURL))
                 {
@@ -96,16 +107,16 @@
                     <div class="my-3">
                         <span><strong><span class="badge bg-danger">Not Active</span> status for Zoom Custom Streaming Service? Use these parameters:</strong></span>
                         <div>
-                            <span class="ms-2"><strong>Streaming URL: </strong></span> <span>@session.Track.StreamIngestionURL</span>
+                            <span><strong>Streaming URL: </strong></span> <span>@session.Track.StreamIngestionURL</span>
                         </div>
                         <div>
-                            <span class="ms-2"><strong>Streaming key: </strong></span> <span>@session.Track.StreamKey</span>
+                            <span><strong>Streaming key: </strong></span> <span>@session.Track.StreamKey</span>
                         </div>
                         <div>
-                            <span class="ms-2"><strong>Live streaming page URL: </strong></span> <span>@session.SessionYouTubeURL</span>
+                            <span><strong>Live streaming page URL: </strong></span> <span>@session.SessionYouTubeURL</span>
                         </div>
                         <div>
-                            <span class="ms-2"><strong>Resolution: </strong></span> <span>Full HD (1080p)</span>
+                            <span><strong>Resolution: </strong></span> <span>Full HD (1080p)</span>
                         </div>
                     </div>
                 </p>

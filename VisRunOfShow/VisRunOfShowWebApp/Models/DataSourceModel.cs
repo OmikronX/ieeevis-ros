@@ -231,7 +231,11 @@ namespace IeeeVisRunOfShowWebApp.Models
                             ZoomHostStartURL = dict.GetValueOrDefault("Zoom Host Start URL") ?? "",
                             ZoomHostUsername = dict.GetValueOrDefault("Zoom Host Username") ?? "",
                             AdditionalPresenters = dict.GetValueOrDefault("Additional Presenters") ?? "",
-                            AdditionalPresentersEmails = dict.GetValueOrDefault("Additional Presenters Emails") ?? ""
+                            AdditionalPresentersEmails = dict.GetValueOrDefault("Additional Presenters Emails") ?? "",
+                            SVZoomHost = dict.GetValueOrDefault("SVs Zoom Host") ?? "",
+                            SVZoomHostEmail = dict.GetValueOrDefault("SVs ZH Emails") ?? "",
+                            SVChannelMonitor = dict.GetValueOrDefault("SVs Channel Monitor") ?? "",
+                            SVChannelMonitorEmail = dict.GetValueOrDefault("SVs CM emails") ?? ""
                         };
                         if (string.IsNullOrWhiteSpace(vm.SessionFFURL))
                             vm.SessionFFURL = ffVideos.GetValueOrDefault(vm.SessionID) ?? "";
