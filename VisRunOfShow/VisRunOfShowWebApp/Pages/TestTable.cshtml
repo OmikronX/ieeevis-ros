@@ -1,0 +1,26 @@
+﻿@page
+@model IeeeVisRunOfShowWebApp.Pages.TestTableModel
+
+@{
+    ViewData["Title"] = "Test Table Data";
+}
+
+<h2>Test Table Data</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.TestTableData)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.name</td>
+            </tr>
+        }
+    </tbody>
+</table>

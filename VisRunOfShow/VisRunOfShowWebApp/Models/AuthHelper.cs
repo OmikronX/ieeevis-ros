@@ -1,8 +1,7 @@
 ﻿using System.Text;
-using System;
 using System.Security.Cryptography;
 
-namespace VisRunOfShowWebApp.Models
+namespace IeeeVisRunOfShowWebApp.Models
 {
     public class AuthHelper
     {

@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
-using VisRunOfShowWebApp.Models;
 
 namespace IeeeVisRunOfShowWebApp.Models
 {

@@ -40,3 +40,9 @@ If the program executes successfully, the application would be available to view
 This project is MIT-licensed. Please refer to the LICENSE file in the root directory.
 
 Copyright © Johannes Knittel
+
+# Raw notes on setup for 2025 (to be clened up later)
+Run the following command in project directory (that is where the VisRunOfShowWebApp.csproj file is):
+- dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+
+When building the docker file, use only the build command from the docker_build.sh

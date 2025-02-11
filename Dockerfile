@@ -30,6 +30,9 @@ EXPOSE 7133
 # Set environment variables if necessary (e.g., ASPNETCORE_ENVIRONMENT)
 ENV ASPNETCORE_URLS=http://+:7133
 
+# You can set this to 'Development' when a problem occures during development, but it should be always set to 'Production' when deploying.
+ENV ASPNETCORE_ENVIRONMENT=Production
+
 WORKDIR /webapp
 
 # Run the .NET application

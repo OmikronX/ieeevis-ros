@@ -1,7 +1,6 @@
 ﻿using IeeeVisRunOfShowWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using VisRunOfShowWebApp.Models;
 
 namespace IeeeVisRunOfShowWebApp.Pages
 {
@@ -30,6 +29,7 @@ namespace IeeeVisRunOfShowWebApp.Pages
 
         public IndexModel(ILogger<IndexModel> logger)
         {
+            // When you are getting an unhandled execption at this point, it is likely that the appsettings.json file is missing or the AdminKey and PrivateKey are not set.
             _logger = logger;
         }
 
